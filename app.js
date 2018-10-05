@@ -25,7 +25,11 @@ var commentRoutes       = require("./routes/comments"),
 
 
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true }); ***The old line used for IDE database connection***
+mongoose.connect("mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp", { useNewUrlParser: true }); //***The new line. From mLab online database so we have a DB that works with a deployed app***
+
+//mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
