@@ -22,14 +22,26 @@ var express      = require("express"),
 var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
+    
+    
+// =============================
+//  New Code Seperating DBs
+// =============================
+//I've set different databases for the locally hosted app and the one on Heroku
+// for LOCAL(in terminal *** export DATABASEURL=mongodb://localhost:27017/yelp_camp
+    //console.log(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+// OR mongoose.connect(process.env.DATABASEURL)
 
-
-
-//mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true }); ***The old line used for IDE database connection***
+/*
+=====================================
+ Old code seperate DBs Local & Cloud
+=====================================
+mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true }); //***The old line used for LOCAL database connection***
 mongoose.connect("mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp", { useNewUrlParser: true }); //***The new line. From mLab online database so we have a DB that works with a deployed app***
 
-//mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp
-
+mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp
+*/
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
