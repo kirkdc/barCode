@@ -25,9 +25,9 @@
                         </p>
                         
                         <p>
-                            <em>Submitted By</em> <%= campgrounds.author.username %> 
+                            <em>Submitted By</em> <a href="/users/<%= campgrounds.author.id %>"><%= campgrounds.author.username %></a> 
                         </p>
-                    <% if(currentUser && campgrounds.author.id.equals(currentUser._id)){ %>
+                    <% if(currentUser && campgrounds.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                         
                         <a class="btn btn-warning" href="/campgrounds/<%= campgrounds._id %>/edit">Edit</a>
                         
@@ -53,7 +53,7 @@
                                     <%= comment.text %>
                                 </p>
                                 
-                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                                 
                                 <a class="btn btn-xs btn-warning" 
                                    href="/campgrounds/<%= campgrounds._id %>/comments/<%= comment._id %>/edit"> 

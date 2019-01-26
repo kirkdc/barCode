@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var express      = require("express"),
 
     app          = express(),
@@ -23,15 +25,22 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
     
+/*
+=============================
+ New Code Seperating DBs
+=============================
+I've set different databases for the locally hosted app and the one on Heroku. This is how its done
+for LOCAL(in terminal *** export DATABASEURL=mongodb://localhost:27017/yelp_camp
+for mLab go to Heroku =>click on this app => settings =>config variables => KEY--DATABASEURL VALUE--mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp     
+*/    
     
-// =============================
-//  New Code Seperating DBs
-// =============================
-//I've set different databases for the locally hosted app and the one on Heroku
-// for LOCAL(in terminal *** export DATABASEURL=mongodb://localhost:27017/yelp_camp
-    //console.log(process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
-// OR mongoose.connect(process.env.DATABASEURL)
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+var connectOptions = {useNewUrlParser: true};
+mongoose.connect(url, connectOptions);    
+// ^THIS^ is just setting up a backup("mongodb://localhost/yelp_camp") so the code doesnt completely break if you havent set up just "process.env.DATABASEURL"
+   
+
+
 
 /*
 =====================================

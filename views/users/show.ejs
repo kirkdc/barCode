@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                            <h1> <%= user.firstName + " " + user.lastName %> </h1>
+            <div class="thumbnail">
+                <img src="<%= user.avatar %>" alt="user profile picture">
+                
+                <div class="caption">
+                    <a href"mailto:<%= user.email %>"><%= user.email %></a>
+                </div>
+
+            </div>
+            <div>
+                Bacon ipsum dolor amet jerky corned beef salami, cow leberkas pancetta flank strip steak sirloin chicken. Cow tenderloin frankfurter brisket pork belly, porchetta swine pig tongue. Flank pork belly doner leberkas t-bone tongue. Tongue chuck tail pork chop, pancetta short ribs pork. Corned beef ham hock pork pancetta jowl capicola.
+        
+                 Chuck picanha kevin, pancetta turkey short loin ham hock alcatra porchetta ball tip jerky pig cow boudin jowl. Ball tip t-bone doner, cow porchetta pork chop burgdoggen hamburger turkey tongue ribeye meatball capicola. Doner meatball strip steak, brisket bacon prosciutto drumstick pork loin tongue venison. Venison alcatra andouille, short ribs sausage pork loin brisket shoulder ground round corned beef.
+            </div>
+        </div>
+                    <div class="col-md-8">
+                        <h3> <%= user.username %>'s campgrounds:</h3>
+                <ul>
+                    <% campgrounds.forEach(function(campground) { %>
+                        <li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a> </li>
+                    <% }) %>
+                </ul>
+            </div>
+    </div>
+
+
+
+<% include ../partials/footer %>
