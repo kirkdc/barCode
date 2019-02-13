@@ -2,33 +2,56 @@
 
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                            <h1> <%= user.firstName + " " + user.lastName %> </h1>
-            <div class="thumbnail">
-                <img src="<%= user.avatar %>" alt="user profile picture">
-                
-                <div class="caption">
-                    <a href"mailto:<%= user.email %>"><%= user.email %></a>
-                </div>
+        <div class="row justify-content-center">
+           <div class="card mb-4 border-light bg-opacity user-profile">
+            <div class="">
+                <h1>
+                    <%= user.firstName + " " + user.lastName %>
+                </h1>
+                <div class="col-md-8">
+                    <img class="user-pic"  src="<%= user.avatar %>" onerror="this.onerror=null;this.src='https://i.ibb.co/7NQzSX8/Bar-Profile2.jpg';" alt="user profile picture">
 
+                    <div class="caption user-email">
+                        <a href="mailto:<%= user.email %>">
+                            <%= user.email %>
+                        </a>
+                    </div>
+                    <hr>
+
+                </div>
+                <div>
+                    <h4 class="card-title"> About </h4>
+                    <p class="card-text"> <%= user.about %> </p>
+
+                        <div class="edit-button">
+                            <% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+
+                                <a class="btn btn-warning" href="/users/<%= user._id %>/edit">Edit</a>
+
+                                <% } %>
+                        </div>
+
+                </div>
+                
             </div>
-            <div>
-                Bacon ipsum dolor amet jerky corned beef salami, cow leberkas pancetta flank strip steak sirloin chicken. Cow tenderloin frankfurter brisket pork belly, porchetta swine pig tongue. Flank pork belly doner leberkas t-bone tongue. Tongue chuck tail pork chop, pancetta short ribs pork. Corned beef ham hock pork pancetta jowl capicola.
-        
-                 Chuck picanha kevin, pancetta turkey short loin ham hock alcatra porchetta ball tip jerky pig cow boudin jowl. Ball tip t-bone doner, cow porchetta pork chop burgdoggen hamburger turkey tongue ribeye meatball capicola. Doner meatball strip steak, brisket bacon prosciutto drumstick pork loin tongue venison. Venison alcatra andouille, short ribs sausage pork loin brisket shoulder ground round corned beef.
             </div>
-        </div>
-                    <div class="col-md-8">
-                        <h3> <%= user.username %>'s campgrounds:</h3>
+            
+            <div class="col-md-4">
+                <h3 class="user-bars">
+                    <%= user.username %>'s bars:</h3>
                 <ul>
-                    <% campgrounds.forEach(function(campground) { %>
-                        <li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a> </li>
-                    <% }) %>
+                    <% bar.forEach(function(bar) { %>
+                        <li>
+                            <a href="/bars/<%= bar.id %>">
+                                <%= bar.name %>
+                            </a>
+                        </li>
+                        <% }) %>
                 </ul>
             </div>
-    </div>
+              
+        </div>
+<a href="/bars"> Go Back </a>
+</div>
 
-
-
-<% include ../partials/footer %>
+        <% include ../partials/footer %>

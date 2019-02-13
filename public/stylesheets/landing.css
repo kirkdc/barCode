@@ -6,116 +6,73 @@ body{
   z-index: 1;
   position: relative;
   text-align: center;
-  padding-top: 40vh;
+  padding-top: 55vh;
 }
 
 #landing-header h1 {
   color: #fff;
 }
 
-.slideshow { 
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+
+html,body{
+  height:100%
 }
 
-.slideshow li { 
-  width: 100%;
-  height: 100%;
+body {
+  background: url("https://i.ibb.co/Tmxs5YW/Landing-WEB.jpg")  center no-repeat;
+  background-size:cover;
+  margin:0
+}
+.logo {
+  text-align: center;
+  width: 65%;
+  height: 250px;
+  margin: auto;
   position: absolute;
   top: 0;
   left: 0;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  opacity: 0;
-  z-index: 0;
-  animation: imageAnimation 50s linear infinite; 
+  right: 0;
+  bottom: 57%;
 }
 
-.slideshow li:nth-child(1) { 
-  background-image: url(https://image.ibb.co/dvCzye/1.jpg) 
+.logo .neon-letters{
+  font: 100 15vh "Vibur";
+  color: #fee;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
 }
-.slideshow li:nth-child(2) { 
-  background-image: url(https://image.ibb.co/kYqKye/3.jpg);
-  animation-delay: 10s; 
+.logo .neon-letters span{
+  animation: blink linear infinite 2s;
 }
-.slideshow li:nth-child(3) { 
-  background-image: url(https://image.ibb.co/kC0Kye/4.jpg);
-  animation-delay: 20s; 
-}
-.slideshow li:nth-child(4) { 
-  background-image: url(https://image.ibb.co/jQscjK/2.jpg);
-  animation-delay: 30s; 
-}
-.slideshow li:nth-child(5) { 
-  background-image: url(https://image.ibb.co/fcCMBz/5.jpg);
-  animation-delay: 40s; 
-}
-
-
-/*
-https://image.ibb.co/dvCzye/1.jpg
-https://image.ibb.co/jQscjK/2.jpg
-https://image.ibb.co/kYqKye/3.jpg
-https://image.ibb.co/kC0Kye/4.jpg
-https://image.ibb.co/fcCMBz/5.jpg
-*/
-
-@keyframes imageAnimation { 
-  0% { 
-    opacity: 0; 
-    animation-timing-function: ease-in;
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
   }
-  10% {
-    opacity: 1;
-    animation-timing-function: ease-out;
+  79%{
+     color: #333;
   }
-  20% {
-    opacity: 1
+  80% {
+    
+    text-shadow: none;
   }
-  30% {
-    opacity: 0
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
   }
 }
-
-/* Older browser support - .no-cssanimations class added by modernizr */
-.no-cssanimations .slideshow li {
-	opacity: 1;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

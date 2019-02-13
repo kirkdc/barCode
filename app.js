@@ -13,44 +13,32 @@ var express      = require("express"),
     LocalStrategy= require("passport-local"),
     methodOverride= require("method-override"),
     
-    Campground   = require("./models/campground"),//keep the var here Campground because "Campground" is being used everywhere below
+    bar   = require("./models/bar"),
     Comment      = require("./models/comment"),
-    User         = require("./models/user"),
-    seedDB       = require("./seeds");
+    User         = require("./models/user");
+    
 
 
 // ****REQUIRING ROUTES****
 //  You first split up all your route files into  .js of their own. Add var express and var router. Do a module.exports and then require it below. Then add in an app.use() for each of the routes.
 var commentRoutes       = require("./routes/comments"),
-    campgroundRoutes    = require("./routes/campgrounds"),
+    barRoutes    = require("./routes/bars"),
     indexRoutes         = require("./routes/index");
     
 /*
 =============================
- New Code Seperating DBs
+Code Seperating DBs
 =============================
 I've set different databases for the locally hosted app and the one on Heroku. This is how its done
-for LOCAL(in terminal *** export DATABASEURL=mongodb://localhost:27017/yelp_camp
-for mLab go to Heroku =>click on this app => settings =>config variables => KEY--DATABASEURL VALUE--mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp     
+for LOCAL(in terminal *** export DATABASEURL=mongodb://localhost:27017/bar_code
+for mLab go to Heroku =>click on this app => settings =>config variables => KEY--DATABASEURL VALUE--<mlab link here>     
 */    
     
-var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/bar_code";
 var connectOptions = {useNewUrlParser: true};
 mongoose.connect(url, connectOptions);    
-// ^THIS^ is just setting up a backup("mongodb://localhost/yelp_camp") so the code doesnt completely break if you havent set up just "process.env.DATABASEURL"
-   
+// ^THIS^ is just setting up a backup("mongodb://localhost/bar_code") so the code doesnt completely break if you havent set up just "process.env.DATABASEURL"
 
-
-
-/*
-=====================================
- Old code seperate DBs Local & Cloud
-=====================================
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true }); //***The old line used for LOCAL database connection***
-mongoose.connect("mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp", { useNewUrlParser: true }); //***The new line. From mLab online database so we have a DB that works with a deployed app***
-
-mongodb://yelpcamp:Yelpcamp123@ds123783.mlab.com:23783/yelpcamp
-*/
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -59,7 +47,10 @@ app.use(express.static(__dirname +"/public")) //this is to connect the styleshee
 app.use(methodOverride("_method"));
 app.use(flash());
 
-//seedDB(); //seed the database
+
+
+//requiring moment after npm install - this helps with the timestamps
+app.locals.moment = require('moment');
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
@@ -83,10 +74,10 @@ app.use(function(req, res, next){
 }); 
 
 app.use("/",indexRoutes);
-app.use("/campgrounds", campgroundRoutes); //"/campgrounds" this makes sure that all routes in the campgrounds.js automatically start with /campgrounds so you dont have to repeat it for all routes in the campground file you can just "/"
-app.use("/campgrounds/:id/comments", commentRoutes); //the problem with this is :id route parameter is not making it to the comment routes(it cant be found)...INSIDE "comments.js"  you have to pass in an option inside of an object in the var router = express.Router({mergeParams: true}); 
+app.use("/bars", barRoutes); //"/bars" this makes sure that all routes in the bars.js automatically start with /bars so you dont have to repeat it for all routes in the bar file you can just "/"
+app.use("/bars/:id/comments", commentRoutes); //the problem with this is :id route parameter is not making it to the comment routes(it cant be found)...INSIDE "comments.js"  you have to pass in an option inside of an object in the var router = express.Router({mergeParams: true}); 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT || 3000, function(){
    console.log("SERVER IS ACTIVE!"); 
 });

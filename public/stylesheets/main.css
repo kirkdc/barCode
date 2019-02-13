@@ -14,3 +14,152 @@
     display: inline;
 }
 
+
+/* for the footer*/
+
+html {
+  position: relative;
+  min-height: 100%;
+    
+  background: url("https://i.ibb.co/VCwv7qV/Bar-BG1.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*
+Background Options
+https://i.ibb.co/VCwv7qV/Bar-BG1.jpg
+https://i.ibb.co/Jy7RCgg/Bar-BG2.jpg
+https://i.ibb.co/b5DS2C3/Bar-BG3.jpg
+https://i.ibb.co/Kzm56hf/Bar-BG4.jpg
+https://i.ibb.co/Z1nyyFb/Bar-BG5.jpg
+*/
+
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background-color: transparent;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #181d1d;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+/* Thumbnail styles */
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+.navbar-brand {
+    width: 210px !important;
+    padding: 5px 3px;
+    border-radius: 5px;
+   
+}
+
+.mb-4, .my-4 {
+ padding: .2em 1em;
+}
+
+.bg-dark {
+    background-color: #181d1d !important;
+}
+
+.logo-img {
+    width: 100%;
+    height: auto;
+}
+
+
+.jumbotron {
+    background-color: rgba(240, 248, 255, 0.52);
+    border-radius: 20px;
+}
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding: 16px;
+    }
+}
+
+.bg-opacity {
+    background-color: rgba(255, 255, 255, 0.52);
+    border-radius: 20px;
+}
+
+.user-profile {
+   padding: 20px; 
+    margin-right: 5%;
+    
+}
+
+.user-bars {
+    color: #adb5bc;
+}
+
+.jumbotron .container {
+    text-align: center;
+    line-height: 1;
+}
+
+.map-placeholder {
+color: orangered;
+font-weight: 600;
+}
+
+.coming-soon {
+    font-size: 60%;
+    color: orangered;
+}
+
+.signup-prompt {
+    text-align: center;
+    margin-top: 30px;
+    color: #aed9ce;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.15);
+    border-radius: 20px;
+}
+
+.signup-container {
+    margin-bottom: 85px;
+}
+
+.user-email {
+    background-color: rgba(255, 255, 255, 0.25); 
+    border-radius: 6px;
+    padding: 2px 4px;
+}
+
+.user-pic{
+    border: 5px solid #232e29;
+    border-radius: 6px;
+    width: auto;
+    max-width: 430px;
+}
+
+
+.index-img {
+    width: auto;
+    height: 175px;
+}
+

@@ -1,41 +1,56 @@
 <% include ./partials/header %>
 
     <div class="container">
-        <div class="row">
-
-            <h1 style="text-align: center"> Signup Form </h1>
-            <div style="width: 30%; margin: 25px auto;">
+        <div class="row justify-content-center signup-container bg-opacity">
+        <div class="col-md-12 text-center">
+            <h1 > Sign Up </h1>
+        </div>
+            
+            <div class="col-xs-12 col-md-6 col-lg-4">
                 <form action="/register" method="POST">
-                   <div class="form-group"> 
-                    <input class="form-control" type="text" name="username" placeholder="username"> 
-                   </div>
-                   <div class="form-group"> 
-                    <input class="form-control" type="password" name="password" placeholder="password"> 
-                   </div>
-                   
-                <div class="form-group"> 
-                    <input class="form-control" type="text" name="firstName" placeholder=" first name"> 
-                   </div>
-                   
-                <div class="form-group"> 
-                    <input class="form-control" type="text" name="lastName" placeholder="last name"> 
-                   </div>
-                   
-                <div class="form-group"> 
-                    <input class="form-control" type="email" name="email" placeholder="email"> 
-                   </div>
-                   
-                   <div class="form-group"> 
-                    <input class="form-control" type="text" name="avatar" placeholder="avatar Url"> 
-                   </div>
-                   
-                <div class="form-group"> 
-                    <input class="form-control" type="text" name="adminCode" placeholder="admin Code"> 
-                </div>   
-                   
-                   <div class="form-group"> 
-                    <button class="btn btn-lg btn-primary btn-block">Sign Up</button> 
-                   </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" class="form-control" type="text" name="username" placeholder="username">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="password">Password</label>
+                        <input id="password" class="form-control" type="password" name="password" placeholder="password">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="firstName">First Name</label>
+                        <input id="firstName" class="form-control" type="text" name="firstName" placeholder=" first name">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="lastName">Last Name</label>
+                        <input id="lastName" class="form-control" type="text" name="lastName" placeholder="last name">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="email">Email</label>
+                        <input id="email" class="form-control" type="email" name="email" placeholder="email">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="avatar">Avatar</label>
+                        <input id="avatar" class="form-control" type="text" name="avatar" placeholder="avatar Url">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="about">About</label>
+                        <input id="about" class="form-control" type="text" name="about" placeholder="about">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="adminCode">Admin Code</label>
+                        <input id="adminCode" class="form-control" type="password" name="adminCode" placeholder="(ONLY FOR WEBSITE ADMINS)">
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Sign Up</button>
+                    </div>
                 </form>
             </div>
         </div>

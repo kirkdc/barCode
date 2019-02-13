@@ -2,12 +2,13 @@ var mongoose = require("mongoose");
 
 
 //SCHEMA SETUP
-var campgroundSchema = new mongoose.Schema({
+var barSchema = new mongoose.Schema({
     name: String,
     price: String,
     image: String,
     imageId: String,
     description: String,
+    createdAt: { type: Date, default: Date.now },
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -23,6 +24,4 @@ var campgroundSchema = new mongoose.Schema({
     ]
 });
 
-//var Campground = mongoose.model("Campground", campgroundSchema)
-
-module.exports = mongoose.model("Campground", campgroundSchema); //Here we're exporting it so we can require it in the app.js file.
+module.exports = mongoose.model("bar", barSchema); //Here we're exporting it so we can require it in the app.js file.

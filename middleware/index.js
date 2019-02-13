@@ -1,4 +1,4 @@
-var Campground = require("../models/campground");
+var bar = require("../models/bar");
 var Comment = require("../models/comment");
 
 
@@ -6,15 +6,15 @@ var Comment = require("../models/comment");
 
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next){
+middlewareObj.checkBarOwnership = function(req, res, next){
       if(req.isAuthenticated()) {
-        Campground.findById(req.params.id, function (err, foundCampground) { 
-            if(err || !foundCampground) {
-                req.flash("error" , "Campground not found");
+        bar.findById(req.params.id, function (err, foundBar) { 
+            if(err || !foundBar) {
+                req.flash("error" , "Bar not found");
                 res.redirect("back");
             } else {
-                // has the user created a campground?
-                if(foundCampground.author.id.equals(req.user._id) || req.user.isAdmin) {
+                // has the user created a bar?
+                if(foundBar.author.id.equals(req.user._id) || req.user.isAdmin) {
                     next();
                 } else {
                     req.flash("error" , "You don't have permission to do that!");

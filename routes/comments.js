@@ -2,20 +2,20 @@ var express = require("express");
 var router = express.Router({
     mergeParams: true
 }); // you include this line then replace app.get, app.post etc with router.get router.post...
-var Campground = require("../models/campground");
+var bar = require("../models/bar");
 var Comment = require("../models/comment");
 var middleware = require("../middleware"); //we don't have to type in "../middleware/index.js" because any file labeled index.js in a dir. will automatically be required. ITS A "SPECIAL" NAME
 
 
 // Comments New
 router.get("/new", middleware.isLoggedIn, function (req, res) {
-    //find campground by id
-    Campground.findById(req.params.id, function (err, campground) {
+    //find bar by id
+    bar.findById(req.params.id, function (err, bar) {
         if (err) {
             console.log(err);
         } else {
             res.render("comments/new", {
-                campground: campground
+                bar: bar
             });
         }
     })
@@ -24,11 +24,11 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
 
 // Comments Create
 router.post("/", middleware.isLoggedIn, function (req, res) {
-    //lookup campground using ID
-    Campground.findById(req.params.id, function (err, campground) {
+    //lookup bar using ID
+    bar.findById(req.params.id, function (err, bar) {
         if (err) {
             console.log(err);
-            res.redirect("/campgrounds")
+            res.redirect("/bars")
         } else {
             Comment.create(req.body.comment, function (err, comment) {
                 if (err) {
@@ -40,11 +40,11 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     comment.author.username = req.user.username;
                     //SAVE THE COMMENT
                     comment.save();
-                    campground.comments.push(comment);
-                    campground.save();
-                    console.log(comment);
+                    bar.comments.push(comment);
+                    bar.save();
+//                    console.log(comment);
                     req.flash("success", "Successfully created comment");
-                    res.redirect("/campgrounds/" + campground._id);
+                    res.redirect("/bars/" + bar._id);
 
                 }
             });
@@ -54,16 +54,16 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
 
 // COMMENTS EDIT ROUTE
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, function (req, res) {
-    Campground.findById(req.params.id, function (err, foundCampground) {
-        if (err || !foundCampground) {
-            req.flash("error", "No campground found");
+    bar.findById(req.params.id, function (err, foundBar) {
+        if (err || !foundBar) {
+            req.flash("error", "No bar found");
             return res.redirect("back");
         }
         Comment.findById(req.params.comment_id, function (err, foundComment) {
             if (err) {
                 res.redirect("back");
             } else {
-                res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+                res.render("comments/edit", {bar_id: req.params.id, comment: foundComment});
             }
         });
     });
@@ -76,7 +76,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function (req, res)
         if (err) {
             res.redirect("back");
         } else {
-            res.redirect("/campgrounds/" + req.params.id);
+            res.redirect("/bars/" + req.params.id);
         }
     });
 
@@ -90,7 +90,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function (req, r
             res.redirect("back");
         } else {
             req.flash("success", "Comment deleted");
-            res.redirect("/campgrounds/" + req.params.id);
+            res.redirect("/bars/" + req.params.id);
         }
     })
 });

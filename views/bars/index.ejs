@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+
+
+    <div class="container">
+
+
+        <header class="jumbotron">
+            <div class="container">
+                <h1> Welcome to barCode </h1>
+                <h4> Bars reviewed for you, by people just like you.</h4> 
+                <h6>We all love our alcohol but having a cozy place to drink, makes it so much better!</h6>
+                
+                <h6>Whats your Bar Code?</h6>
+                <p>
+                    <a class="btn btn-primary btn-large" href="/bars/new"> Add a Bar </a>
+                </p>
+            </div>
+        </header>
+
+        <div class="row text-center">
+            <% bar.forEach(function(bar){ %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="<%= bar.image %>" class="index-img card-img-top" alt="<%= bar.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= bar.name %></h5>
+                            
+                            <a href="/bars/<%= bar._id %>" class="btn btn-primary">More Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <% }); %>
+        </div>
+    </div>
+    <% include ../partials/footer %>

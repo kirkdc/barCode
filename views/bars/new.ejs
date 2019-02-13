@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+    <div class="row justify-content-center bg-opacity">
+        <div class="col-md-12 text-center">
+        <h1>Create a New bar</h1>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <form action="/bars" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                   <label for="barName">Name</label>
+                    <input id="barName" class="form-control" type="text" name="bar[name]" placeholder="bar name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input id="image" type="file" id="image" name="image" accept="image/*" required>
+                </div>
+
+                
+                <div class='form-group'>
+                   <label for="price">Price Per Couple (approx) </label>
+                    <input id="price" class="form-control" type="number" name="bar[price]" placeholder="price" min="0.01" step="0.01">
+                </div>
+
+
+                <div class="form-group">
+                   <label for="description">Description</label>
+                    <input id="description" class="form-control" type="text" name="bar[description]" placeholder="description">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+        </div>
+           
+    </div>
+    <a href="/bars">Go Back</a>
+    <% include ../partials/footer %>
