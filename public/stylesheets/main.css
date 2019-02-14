@@ -157,6 +157,9 @@ font-weight: 600;
     max-width: 430px;
 }
 
+.user-about {
+    max-width: 460px;
+}
 
 .index-img {
     width: auto;
