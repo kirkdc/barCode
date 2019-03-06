@@ -1,4 +1,4 @@
-# A bar review app. Still work in progress as of 14 FEB 2019. 
+# A bar review app. Still work in progress
 
 ### Features to be added include:
 
